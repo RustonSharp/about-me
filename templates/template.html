@@ -7,268 +7,487 @@
     <title>Yanqiang Qiao — Full-Stack & AI Workflow Engineer</title>
     <meta name="description" content="Yanqiang Qiao — full-stack engineer in Berlin building AI agents and workflow automation. 2.5 years on an industrial IoT platform; LangGraph, n8n, LangChain, Vue, React, C#/.NET, Python.">
     <meta name="author" content="Yanqiang Qiao">
-    <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="https://rustonsharp.github.io/about-me/">
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Yanqiang Qiao — Full-Stack & AI Workflow Engineer">
     <meta property="og:description" content="Full-stack engineer in Berlin building AI agents and workflow automation.">
     <meta property="og:url" content="https://rustonsharp.github.io/about-me/">
     <meta name="twitter:card" content="summary">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111'/%3E%3Ctext x='32' y='41' font-family='Helvetica,Arial,sans-serif' font-size='24' font-weight='600' fill='%23fff' text-anchor='middle'%3EYQ%3C/text%3E%3C/svg%3E">
-    <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#fafafa">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171717'/%3E%3Ctext x='32' y='41' font-family='Helvetica,Arial,sans-serif' font-size='24' font-weight='600' fill='%23fafafa' text-anchor='middle'%3EYQ%3C/text%3E%3C/svg%3E">
+    <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
     <style>
         @font-face {
-            font-family: 'Inter';
+            font-family: 'Geist';
             font-style: normal;
             font-weight: 400 600;
             font-display: swap;
-            src: url(assets/fonts/inter.woff2) format('woff2');
+            src: url(assets/fonts/geist.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 400 500;
+            font-display: swap;
+            src: url(assets/fonts/jetbrains-mono.woff2) format('woff2');
         }
 
         :root {
-            --bg: #ffffff;
-            --text: #111111;
-            --muted: #6b6b6b;
-            --line: #ececec;
-            --underline: #c4c4c4;
-        }
+            --canvas: #fafafa;
+            --ink: #171717;
+            --ink-2: #525252;
+            --meta: #737373;
+            --meta-2: #a3a3a3;
+            --rule: #e5e5e5;
+            --underline: #d4d4d4;
+            --chip: #f0f0f0;
+            --status: #059669;
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0b0b0b;
-                --text: #ededed;
-                --muted: #9a9a9a;
-                --line: #222222;
-                --underline: #4a4a4a;
-            }
+            --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+            --col: 672px;
+            --pad: 1.5rem;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { -webkit-text-size-adjust: 100%; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 15px;
-            line-height: 1.65;
-            color: var(--text);
-            background: var(--bg);
+            font-family: var(--sans);
+            font-size: 14px;
+            line-height: 22px;
+            color: var(--ink);
+            background: var(--canvas);
             -webkit-font-smoothing: antialiased;
-            font-feature-settings: 'tnum';
         }
 
-        main {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 96px 20px 64px;
-        }
+        ::selection { background: #e8e8e8; }
+        :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
 
-        a {
-            color: inherit;
+        a { color: inherit; text-decoration: none; }
+        .link {
             text-decoration: underline;
-            text-decoration-color: var(--underline);
-            text-underline-offset: 3px;
             text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--underline);
             transition: text-decoration-color 0.15s ease;
         }
-        a:hover { text-decoration-color: currentColor; }
-        :focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
+        .link:hover { text-decoration-color: var(--ink); }
 
-        .muted { color: var(--muted); }
+        .mono {
+            font-family: var(--mono);
+            font-size: 12px;
+            line-height: 18px;
+            font-variant-numeric: tabular-nums;
+        }
+        .mono-sm {
+            font-family: var(--mono);
+            font-size: 11px;
+            line-height: 16px;
+            letter-spacing: 0.02em;
+            font-variant-numeric: tabular-nums;
+        }
+        .upper { text-transform: uppercase; letter-spacing: 0.06em; }
+        .muted { color: var(--meta); }
 
-        /* Intro */
-        h1 { font-size: 15px; font-weight: 600; }
-        .role { color: var(--muted); }
-        .intro { margin-top: 24px; }
-        .intro p + p { margin-top: 12px; }
-        .links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; }
+        .wrap { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); }
 
-        /* Sections */
-        section { margin-top: 64px; }
-        h2 {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--muted);
-            margin-bottom: 20px;
+        /* ---------- Header ---------- */
+        .topbar {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 50;
+            background: color-mix(in srgb, var(--canvas) 82%, transparent);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .topbar.scrolled { border-bottom-color: var(--rule); }
+        .topbar .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+        .brand { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+        .brand-name { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+        .brand-sep { color: var(--underline); }
+        .clock {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: var(--chip);
+            color: var(--ink-2);
+            white-space: nowrap;
         }
 
-        .item + .item { margin-top: 28px; }
-        .item-head {
+        .dot {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            flex: none;
+            border-radius: 9999px;
+            background: var(--status);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+            animation: beacon 2s ease-in-out infinite;
+        }
+        .clock .dot { width: 6px; height: 6px; box-shadow: none; }
+        @keyframes beacon { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .nav { display: flex; gap: 1rem; }
+        .nav a { font-size: 13px; line-height: 20px; color: var(--ink-2); transition: color 0.15s ease; }
+        .nav a:hover { color: var(--ink); }
+
+        main { padding-top: 64px; }
+
+        /* ---------- Intro ---------- */
+        .intro { padding-top: 3rem; }
+        .status { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink-2); }
+        h1 { margin-top: 0.75rem; font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.015em; }
+        .role { margin-top: 0.25rem; color: var(--meta); }
+        .bio { margin-top: 1.5rem; font-size: 15px; line-height: 24px; letter-spacing: -0.005em; color: var(--ink-2); }
+        .bio p + p { margin-top: 1rem; }
+
+        .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+        .metric-v { color: var(--ink); font-weight: 500; }
+        .metric-l { color: var(--meta); }
+
+        /* ---------- Sections ---------- */
+        section.block { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+        .block-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+        .block-head h2 { font-family: var(--mono); font-size: 12px; line-height: 18px; font-weight: 500; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.06em; }
+        .block-head .muted { text-align: right; }
+
+        /* Focus-dimming lists */
+        .list { display: flex; flex-direction: column; }
+        .list > * { transition: opacity 180ms ease-in-out; }
+        @media (hover: hover) {
+            .list:hover > *:not(:hover) { opacity: 0.4; }
+        }
+
+        /* Projects */
+        .projects { gap: 1.5rem; }
+        .proj-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+        .proj-title { display: inline-flex; align-items: baseline; gap: 0.3rem; font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: -0.01em; }
+        .arrow { font-family: var(--mono); font-size: 12px; color: var(--meta); display: inline-block; transition: transform 150ms ease; }
+        .proj:hover .arrow, .role-link:hover .arrow { transform: translate(1px, -1px); }
+        .proj-meta { color: var(--meta); text-align: right; white-space: nowrap; }
+        .proj p { margin-top: 0.25rem; max-width: 30rem; font-size: 13px; line-height: 20px; color: var(--ink-2); }
+        .proj-note { color: var(--meta-2); }
+
+        /* Experience */
+        .jobs { gap: 2.5rem; }
+        .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+        .job-title { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: -0.01em; }
+        .job-title .at { margin-left: 0.25rem; color: var(--meta); font-weight: 400; }
+        .job-date { color: var(--meta); white-space: nowrap; }
+        .job p { margin-top: 0.5rem; color: var(--ink-2); }
+        .job ul { list-style: none; margin-top: 0.5rem; color: var(--ink-2); }
+        .job li { position: relative; padding-left: 1rem; }
+        .job li + li { margin-top: 0.25rem; }
+        .job li::before { content: '–'; position: absolute; left: 0; color: var(--meta-2); }
+        .stack { margin-top: 0.5rem; color: var(--meta); }
+
+        /* Education & stack */
+        .edu { display: flex; flex-direction: column; gap: 1rem; }
+        .edu-sub { font-size: 13px; line-height: 20px; color: var(--meta); }
+        .competencies { margin-top: 1.5rem; }
+        .competencies dt { color: var(--meta); }
+        .competencies dd { color: var(--ink-2); margin-bottom: 0.75rem; }
+
+        /* Contact row */
+        .contact-row {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 4rem;
         }
-        .item-title { font-weight: 500; }
-        .item-date { color: var(--muted); white-space: nowrap; font-size: 14px; }
-        .item-sub { color: var(--muted); }
-        .item p, .item ul { margin-top: 8px; }
-        .item ul { list-style: none; }
-        .item li { position: relative; padding-left: 14px; }
-        .item li + li { margin-top: 4px; }
-        .item li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
-        .stack { margin-top: 6px; font-size: 14px; color: var(--muted); }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 4px 10px;
+            border: 0;
+            border-radius: 4px;
+            background: var(--chip);
+            color: var(--ink);
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        .pill:hover { background: #e5e5e5; }
+        .pill svg { width: 14px; height: 14px; flex: none; }
 
-        /* Skills */
-        .skills { display: grid; grid-template-columns: 140px 1fr; gap: 10px 16px; }
-        .skills dt { color: var(--muted); }
+        /* Footer */
+        footer { margin-top: 3rem; padding: 1.5rem 0 3rem; }
+        footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: var(--ink-2); }
+        .copy { display: inline-flex; align-items: center; gap: 0.5rem; }
+        .copy button {
+            display: inline-grid;
+            place-items: center;
+            padding: 4px;
+            border: 0;
+            background: none;
+            color: var(--meta);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: color 0.15s ease;
+        }
+        .copy button:hover { color: var(--ink); }
+        .copy button svg { width: 14px; height: 14px; }
+        .copied { color: var(--status); opacity: 0; transition: opacity 0.2s ease; }
+        .copied.show { opacity: 1; }
+        .socials { display: flex; gap: 0.75rem; align-items: center; }
+        .socials a { transition: color 0.15s ease; }
+        .socials a:hover { color: var(--ink); }
+        .socials .sep { color: var(--underline); }
 
-        footer {
-            margin-top: 80px;
-            padding-top: 20px;
-            border-top: 1px solid var(--line);
-            font-size: 14px;
-            color: var(--muted);
+        /* ---------- Mobile ---------- */
+        @media (max-width: 640px) {
+            :root { --pad: 1.25rem; }
+            .nav { display: none; }
+            section.block { margin-top: 3rem; }
+            .metrics { gap: 0.75rem; }
+            .proj-head, .job-head { flex-direction: column; gap: 0; }
+            .proj-meta { text-align: left; white-space: normal; }
+            .job-date { order: -1; }
         }
 
-        @media (max-width: 520px) {
-            main { padding-top: 56px; }
-            .item-head { flex-direction: column; gap: 0; }
-            .skills { grid-template-columns: 1fr; gap: 2px; }
-            .skills dd { margin-bottom: 10px; }
-        }
-
+        /* ---------- Print ---------- */
         @media print {
+            body { background: #fff; font-size: 12px; line-height: 18px; }
+            .topbar, .contact-row, .copy button, .copied, .status .dot { display: none; }
             main { padding-top: 0; }
-            a { text-decoration: none; }
+            .wrap { max-width: none; padding: 0; }
+            .intro { padding-top: 0; }
+            section.block { margin-top: 1.5rem; padding-top: 1rem; }
+            .job, .proj { break-inside: avoid; }
+            .list > * { opacity: 1 !important; }
+            footer { margin-top: 1.5rem; padding: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .dot { animation: none; }
+            html { scroll-behavior: auto; }
         }
     </style>
 </head>
 
 <body>
-    <main>
-        <header>
-            <h1>Yanqiang Qiao</h1>
-            <p class="role">Full-Stack Developer · AI Agents &amp; Workflow Automation · Berlin</p>
-
-            <div class="intro">
-                <p>
-                    I'm a full-stack engineer with 2.5 years in production on an industrial IoT platform
-                    serving millions of smart water meters and billions of data records.
-                </p>
-                <p>
-                    I now apply that engineering background to LLM-based systems — agents, RAG and
-                    workflow automation with LangGraph, LangChain and n8n — while studying for an
-                    M.Sc. in Industry 4.0. Open to full-time roles in Germany.
-                </p>
+    <header class="topbar" id="topbar">
+        <div class="wrap">
+            <div class="brand">
+                <a class="brand-name" href="#top">Yanqiang Qiao</a>
+                <span class="brand-sep mono">/</span>
+                <span class="clock mono-sm upper"><span class="dot" aria-hidden="true"></span><span id="clock">Berlin</span></span>
             </div>
-
-            <nav class="links" aria-label="Contact">
-                <a href="mailto:yanqiang.qiao.de@gmail.com">Email</a>
-                <a href="https://github.com/RustonSharp" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/yanqiang-qiao-bb0b43366/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <nav class="nav" aria-label="Sections">
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <section>
-            <h2>Experience</h2>
+    <main id="top">
+        <div class="wrap">
+            <!-- Intro -->
+            <section class="intro">
+                <div class="status mono-sm upper"><span class="dot" aria-hidden="true"></span>Available for full-time roles in Germany</div>
+                <h1>Yanqiang Qiao</h1>
+                <p class="role mono">Full-Stack Developer · AI Agents &amp; Workflow Automation</p>
 
-            <div class="item">
-                <div class="item-head">
-                    <span class="item-title">Full-Stack Developer</span>
-                    <span class="item-date">2023 — 2025</span>
+                <div class="bio">
+                    <p>
+                        I build full-stack systems and the AI workflows that run on top of them. For 2.5 years I developed
+                        an industrial IoT platform serving millions of smart water meters and billions of data records —
+                        APIs, real-time alarms, dashboards and computer vision in production.
+                    </p>
+                    <p>
+                        Currently building LLM-based systems — agents, RAG and workflow automation with LangGraph,
+                        LangChain and n8n — while studying for an M.Sc. in Industry 4.0. Based in Berlin.
+                    </p>
                 </div>
-                <div class="item-sub">Jiangsu Chengshui IoT Technology · Wuxi, China</div>
-                <ul>
-                    <li>Developed an ABP.NET + Vue 3 water utility platform connecting millions of smart meters and sensors, with billion-level data records.</li>
-                    <li>Built device management and analytics APIs, real-time alarm rules, and a Redis queue to absorb peak meter-reading load.</li>
-                    <li>Delivered monitoring dashboards (ECharts), 3D pump-room views (Three.js) and GIS monitoring (Cesium).</li>
-                    <li>Built a meter-reading recognition module with OpenCV and EfficientNet; deployed services on IIS and Linux.</li>
-                </ul>
-            </div>
 
-            <div class="item">
-                <div class="item-head">
-                    <span class="item-title">Java Developer</span>
-                    <span class="item-date">2022</span>
+                <div class="metrics">
+                    <div><div class="mono upper metric-v">2.5 yrs</div><div class="mono-sm metric-l">Production full-stack</div></div>
+                    <div><div class="mono upper metric-v">Millions</div><div class="mono-sm metric-l">Smart meters served</div></div>
+                    <div><div class="mono upper metric-v">3 repos</div><div class="mono-sm metric-l">Open-source AI projects</div></div>
                 </div>
-                <div class="item-sub">Huawei Technologies · Huawei Cloud · Suzhou, China</div>
-                <p>Maintained and enhanced the cloud platform's data integration modules for reliable end-to-end data flow.</p>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <h2>Projects</h2>
-
-            <div class="item">
-                <div class="item-head">
-                    <a class="item-title" href="https://github.com/RustonSharp/contract_forge" target="_blank" rel="noopener noreferrer">Contract Forge ↗</a>
-                    <span class="item-date">2025–26</span>
+            <!-- Projects -->
+            <section class="block" id="projects">
+                <div class="block-head">
+                    <h2>01 / Selected Projects</h2>
+                    <span class="mono muted">2023 — 2026</span>
                 </div>
-                <p>LLM-based contract auditing: document parsing and OCR, clause and signatory compliance checks, regulation-conflict detection, risk assessment and e-signatures, orchestrated as n8n / LangGraph workflows.</p>
-                <div class="stack">LangGraph, n8n, Copilot Studio, PaddleOCR, Python</div>
-            </div>
 
-            <div class="item">
-                <div class="item-head">
-                    <a class="item-title" href="https://github.com/RustonSharp/xu-ai-news-rag" target="_blank" rel="noopener noreferrer">AI News Knowledge Base ↗</a>
-                    <span class="item-date">2025</span>
+                <div class="list projects">
+                    <a class="proj" href="https://github.com/RustonSharp/contract_forge" target="_blank" rel="noopener noreferrer">
+                        <div class="proj-head">
+                            <span class="proj-title">Contract Forge <span class="arrow">↗</span></span>
+                            <span class="proj-meta mono">LangGraph · n8n · Python / 2025</span>
+                        </div>
+                        <p>LLM contract auditing — OCR parsing, clause and signatory compliance, regulation-conflict detection, risk assessment and e-signatures as n8n / LangGraph workflows.</p>
+                    </a>
+
+                    <a class="proj" href="https://github.com/RustonSharp/xu-ai-news-rag" target="_blank" rel="noopener noreferrer">
+                        <div class="proj-head">
+                            <span class="proj-title">AI News Knowledge Base <span class="arrow">↗</span></span>
+                            <span class="proj-meta mono">LangChain · FAISS · React / 2025</span>
+                        </div>
+                        <p>Full-stack RAG system with RSS and web-scraping ingestion, vector search, clustering and summarization using local Qwen models via Ollama.</p>
+                    </a>
+
+                    <a class="proj" href="https://github.com/RustonSharp/doc_ocr_structure" target="_blank" rel="noopener noreferrer">
+                        <div class="proj-head">
+                            <span class="proj-title">OCR &amp; Document Structuring <span class="arrow">↗</span></span>
+                            <span class="proj-meta mono">Python · spaCy · LLM / 2025</span>
+                        </div>
+                        <p>Scanned images and PDFs to structured data — OCR, entity recognition and LLM field extraction with confidence scores and a review UI.</p>
+                    </a>
+
+                    <div class="proj">
+                        <div class="proj-head">
+                            <span class="proj-title">Water Meter Reading Recognition</span>
+                            <span class="proj-meta mono">OpenCV · EfficientNet / 2023–25</span>
+                        </div>
+                        <p>Production computer-vision module — tilt correction and digit detection across multi-dial meters. <span class="proj-note">Proprietary.</span></p>
+                    </div>
                 </div>
-                <p>Full-stack RAG system: RSS and web-scraping ingestion, FAISS vector search, clustering and summarization with local Qwen models.</p>
-                <div class="stack">LangChain, FAISS, Ollama, Flask, React</div>
-            </div>
+            </section>
 
-            <div class="item">
-                <div class="item-head">
-                    <a class="item-title" href="https://github.com/RustonSharp/doc_ocr_structure" target="_blank" rel="noopener noreferrer">OCR &amp; Document Structuring ↗</a>
-                    <span class="item-date">2025</span>
+            <!-- Experience -->
+            <section class="block" id="experience">
+                <div class="block-head">
+                    <h2>02 / Experience</h2>
+                    <span class="mono muted">Industry</span>
                 </div>
-                <p>Turns scanned images and PDFs into structured data with OCR, entity recognition and LLM field extraction, including confidence scores and a review UI.</p>
-                <div class="stack">Python, OCR, spaCy, LLM</div>
-            </div>
 
-            <div class="item">
-                <div class="item-head">
-                    <span class="item-title">Water Meter Reading Recognition</span>
-                    <span class="item-date">Chengshui IoT</span>
+                <div class="list jobs">
+                    <article class="job">
+                        <div class="job-head">
+                            <div class="job-title">Full-Stack Developer<span class="at mono">@ Chengshui IoT</span></div>
+                            <span class="job-date mono">2023 — 2025</span>
+                        </div>
+                        <ul>
+                            <li>Developed an ABP.NET + Vue 3 water utility platform connecting millions of smart meters, with billion-level data records.</li>
+                            <li>Built device and analytics APIs, real-time alarm rules, and a Redis queue to absorb peak meter-reading load.</li>
+                            <li>Delivered ECharts dashboards, Three.js pump-room views and Cesium GIS monitoring; deployed on IIS and Linux.</li>
+                            <li>Built the meter-reading recognition module with OpenCV and EfficientNet.</li>
+                        </ul>
+                        <div class="stack mono-sm">C# / ABP.NET · Vue 3 · SQL Server · Redis · ECharts · OpenCV</div>
+                    </article>
+
+                    <article class="job">
+                        <div class="job-head">
+                            <div class="job-title">Java Developer<span class="at mono">@ Huawei Cloud</span></div>
+                            <span class="job-date mono">2022</span>
+                        </div>
+                        <p>Maintained and enhanced the cloud platform's data integration modules for reliable end-to-end data flow across systems.</p>
+                        <div class="stack mono-sm">Java · Data Integration</div>
+                    </article>
                 </div>
-                <p>Production computer-vision module: preprocessing, Hough-transform tilt correction and EfficientNet digit detection across multi-dial meters. Source is proprietary.</p>
-                <div class="stack">OpenCV, EfficientNet, Python</div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <h2>Skills</h2>
-            <dl class="skills">
-                <dt>AI &amp; Automation</dt>
-                <dd>LangChain, LangGraph, n8n, Copilot Studio, Ollama, RAG, OpenCV</dd>
-                <dt>Frontend</dt>
-                <dd>TypeScript, Vue 3, React, ECharts, Three.js</dd>
-                <dt>Backend</dt>
-                <dd>C# / .NET (ABP), Python, Flask, Java</dd>
-                <dt>Data</dt>
-                <dd>SQL Server, SQLite, Redis, FAISS</dd>
-                <dt>Infrastructure</dt>
-                <dd>Linux, IIS, Docker, Git</dd>
-                <dt>Languages</dt>
-                <dd>Chinese (native), English (professional working)</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-
-            <div class="item">
-                <div class="item-head">
-                    <span class="item-title">M.Sc. Industry 4.0</span>
-                    <span class="item-date">2025 — present</span>
+            <!-- Education & stack -->
+            <section class="block" id="education">
+                <div class="block-head">
+                    <h2>03 / Education &amp; Core Stack</h2>
+                    <span class="mono muted">Credentials</span>
                 </div>
-                <div class="item-sub">XU Exponential University of Applied Sciences</div>
-            </div>
 
-            <div class="item">
-                <div class="item-head">
-                    <span class="item-title">B.Eng. Software Engineering</span>
-                    <span class="item-date">2016 — 2022</span>
+                <div class="edu">
+                    <div>
+                        <div class="job-head">
+                            <div class="job-title">M.Sc. Industry 4.0</div>
+                            <span class="job-date mono">2025 — Present</span>
+                        </div>
+                        <div class="edu-sub">XU Exponential University of Applied Sciences · Full-time</div>
+                    </div>
+                    <div>
+                        <div class="job-head">
+                            <div class="job-title">B.Eng. Software Engineering</div>
+                            <span class="job-date mono">2016 — 2022</span>
+                        </div>
+                        <div class="edu-sub">Dalian University of Technology</div>
+                    </div>
                 </div>
-                <div class="item-sub">Dalian University of Technology</div>
-            </div>
-        </section>
 
-        <footer>
-            <a href="mailto:yanqiang.qiao.de@gmail.com">yanqiang.qiao.de@gmail.com</a>
-        </footer>
+                <dl class="competencies">
+                    <dt class="mono-sm upper">AI &amp; Automation</dt>
+                    <dd>LangChain, LangGraph, n8n, Copilot Studio, Ollama, RAG, OpenCV</dd>
+                    <dt class="mono-sm upper">Engineering</dt>
+                    <dd>TypeScript, Vue 3, React, C# / .NET (ABP), Python, Flask, Java, SQL Server, Redis, FAISS, Linux, Docker</dd>
+                    <dt class="mono-sm upper">Languages</dt>
+                    <dd>Chinese (native), English (professional working)</dd>
+                </dl>
+            </section>
+
+            <!-- Contact row -->
+            <div class="contact-row">
+                <a class="pill mono" href="mailto:yanqiang.qiao.de@gmail.com">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                    yanqiang.qiao.de@gmail.com
+                </a>
+                <button class="pill mono" type="button" onclick="window.print()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>
+                    Print / PDF
+                </button>
+            </div>
+        </div>
     </main>
+
+    <footer>
+        <div class="wrap mono">
+            <div class="copy">
+                <span>yanqiang.qiao.de@gmail.com</span>
+                <button type="button" id="copy-email" aria-label="Copy email address">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                </button>
+                <span class="copied mono-sm" id="copied" aria-live="polite">Copied</span>
+            </div>
+            <div class="socials">
+                <a href="https://github.com/RustonSharp" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <span class="sep">·</span>
+                <a href="https://www.linkedin.com/in/yanqiang-qiao-bb0b43366/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Live Berlin time in the header badge
+        const clock = document.getElementById('clock');
+        const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+        const tick = () => {
+            const parts = fmt.formatToParts(new Date());
+            const get = (t) => (parts.find((p) => p.type === t) || {}).value || '';
+            clock.textContent = `Berlin · ${get('hour')}:${get('minute')} ${get('timeZoneName')}`;
+        };
+        tick();
+        setInterval(tick, 30000);
+
+        // Hairline under the header once scrolled
+        const bar = document.getElementById('topbar');
+        const onScroll = () => bar.classList.toggle('scrolled', window.scrollY > 4);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Copy email
+        const copyBtn = document.getElementById('copy-email');
+        const copied = document.getElementById('copied');
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText('yanqiang.qiao.de@gmail.com');
+                copied.classList.add('show');
+                setTimeout(() => copied.classList.remove('show'), 1600);
+            } catch (e) { /* clipboard unavailable: the address is visible anyway */ }
+        });
+    </script>
 </body>
 
 </html>
