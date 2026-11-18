@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - main # 只在 main 分支有 push 时触发
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -11,26 +16,28 @@ jobs:
       contents: read
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          
-      - name: Generate HTML file
-        run: |
-          python build_page.py
-      
+
+      - name: Build site
+        run: python build_page.py
+
       - name: Set up Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # 上传整个目录，Github Pages 会找到 index.html
+          path: '_site' # 只上传构建产物，不公开模板、脚本和工作流
 
       - name: Deploy to GitHub Pages
         id: deployment

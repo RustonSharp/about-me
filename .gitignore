@@ -245,3 +245,7 @@ $RECYCLE.BIN/
 .directory
 .Trash-*
 .nfs*
+
+# Build output
+_site/
+index.html
