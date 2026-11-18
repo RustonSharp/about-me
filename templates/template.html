@@ -8,34 +8,15 @@
     <meta name="description" content="Yanqiang Qiao — full-stack engineer in Berlin building AI agents and workflow automation. 2.5 years on an industrial IoT platform; LangGraph, n8n, LangChain, Vue, React, C#/.NET, Python.">
     <meta name="author" content="Yanqiang Qiao">
     <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#12120f" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="https://rustonsharp.github.io/about-me/">
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Yanqiang Qiao — Full-Stack & AI Workflow Engineer">
-    <meta property="og:description" content="Full-stack engineer in Berlin building AI agents and workflow automation on top of production-grade software engineering.">
+    <meta property="og:description" content="Full-stack engineer in Berlin building AI agents and workflow automation.">
     <meta property="og:url" content="https://rustonsharp.github.io/about-me/">
     <meta name="twitter:card" content="summary">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317160f'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-style='italic' fill='%23f5f3ee' text-anchor='middle'%3EYQ%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111'/%3E%3Ctext x='32' y='41' font-family='Helvetica,Arial,sans-serif' font-size='24' font-weight='600' fill='%23fff' text-anchor='middle'%3EYQ%3C/text%3E%3C/svg%3E">
     <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
-    <script>document.documentElement.classList.add('js');</script>
     <style>
-        /* ---------- Fonts (self-hosted, latin subset) ---------- */
-        @font-face {
-            font-family: 'Instrument Serif';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(assets/fonts/instrument-serif.woff2) format('woff2');
-        }
-        @font-face {
-            font-family: 'Instrument Serif';
-            font-style: italic;
-            font-weight: 400;
-            font-display: swap;
-            src: url(assets/fonts/instrument-serif-italic.woff2) format('woff2');
-        }
         @font-face {
             font-family: 'Inter';
             font-style: normal;
@@ -43,710 +24,251 @@
             font-display: swap;
             src: url(assets/fonts/inter.woff2) format('woff2');
         }
-        @font-face {
-            font-family: 'JetBrains Mono';
-            font-style: normal;
-            font-weight: 400 500;
-            font-display: swap;
-            src: url(assets/fonts/jetbrains-mono.woff2) format('woff2');
-        }
 
-        /* ---------- Tokens ---------- */
         :root {
-            --bg: #f5f3ee;
-            --surface: #fbfaf7;
-            --ink: #17160f;
-            --ink-2: #45433b;
-            --muted: #6b685e;
-            --line: rgba(23, 22, 15, 0.12);
-            --line-strong: rgba(23, 22, 15, 0.22);
-            --accent: #b93d0b;
-            --ok: #2f7d4f;
-
-            --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
-            --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-
-            --wrap: 1120px;
-            --gutter: clamp(1rem, 4vw, 2.5rem);
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #6b6b6b;
+            --line: #ececec;
+            --underline: #c4c4c4;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #12120f;
-                --surface: #1a1a16;
-                --ink: #ecebe4;
-                --ink-2: #c4c2b8;
-                --muted: #949186;
-                --line: rgba(236, 235, 228, 0.12);
-                --line-strong: rgba(236, 235, 228, 0.24);
-                --accent: #f0894b;
-                --ok: #6fcf97;
+                --bg: #0b0b0b;
+                --text: #ededed;
+                --muted: #9a9a9a;
+                --line: #222222;
+                --underline: #4a4a4a;
             }
         }
 
-        /* ---------- Base ---------- */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
+        html { -webkit-text-size-adjust: 100%; }
 
         body {
-            font-family: var(--sans);
-            font-size: 1rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 15px;
             line-height: 1.65;
-            color: var(--ink-2);
+            color: var(--text);
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
+            font-feature-settings: 'tnum';
         }
 
-        a { color: inherit; text-decoration: none; }
-        ::selection { background: var(--accent); color: var(--bg); }
-        :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+        main {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 96px 20px 64px;
+        }
 
-        .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+        a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: var(--underline);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: text-decoration-color 0.15s ease;
+        }
+        a:hover { text-decoration-color: currentColor; }
+        :focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
 
-        .mono {
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
+        .muted { color: var(--muted); }
+
+        /* Intro */
+        h1 { font-size: 15px; font-weight: 600; }
+        .role { color: var(--muted); }
+        .intro { margin-top: 24px; }
+        .intro p + p { margin-top: 12px; }
+        .links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; }
+
+        /* Sections */
+        section { margin-top: 64px; }
+        h2 {
+            font-size: 15px;
+            font-weight: 500;
             color: var(--muted);
+            margin-bottom: 20px;
         }
 
-        /* ---------- Nav ---------- */
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: color-mix(in srgb, var(--bg) 82%, transparent);
-            backdrop-filter: saturate(1.4) blur(14px);
-            -webkit-backdrop-filter: saturate(1.4) blur(14px);
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-        .nav.scrolled { border-bottom-color: var(--line); }
-
-        .nav-inner {
+        .item + .item { margin-top: 28px; }
+        .item-head {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 4rem;
-        }
-
-        .brand {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--ink);
-            line-height: 1;
-        }
-
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            font-size: 0.875rem;
-            color: var(--muted);
-            transition: color 0.2s ease;
-        }
-        .nav-links a:hover { color: var(--ink); }
-
-        .nav-cta {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--bg);
-            background: var(--ink);
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            transition: opacity 0.2s ease;
-        }
-        .nav-cta:hover { opacity: 0.85; }
-
-        /* ---------- Hero ---------- */
-        .hero { padding: clamp(4rem, 11vw, 8.5rem) 0 clamp(3rem, 7vw, 5rem); }
-
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.4rem 0.85rem 0.4rem 0.7rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            background: var(--surface);
-            font-size: 0.8125rem;
-            color: var(--ink-2);
-            margin-bottom: 2.5rem;
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--ok);
-            animation: pulse 2.4s ease-out infinite;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 50%, transparent); }
-            70%, 100% { box-shadow: 0 0 0 8px transparent; }
-        }
-
-        .hero h1 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(2.75rem, 7.2vw, 5.75rem);
-            line-height: 1.02;
-            letter-spacing: -0.02em;
-            color: var(--ink);
-            max-width: 16ch;
-        }
-        .hero h1 em { color: var(--accent); }
-
-        .hero-lead {
-            margin-top: 2rem;
-            max-width: 38rem;
-            font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
-            line-height: 1.7;
-        }
-        .hero-lead strong { color: var(--ink); font-weight: 500; }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 2.5rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            height: 2.875rem;
-            padding: 0 1.25rem;
-            border-radius: 999px;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            border: 1px solid var(--line-strong);
-            color: var(--ink);
-            transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-        }
-        .btn:hover { border-color: var(--ink); transform: translateY(-1px); }
-        .btn svg { width: 17px; height: 17px; flex: none; }
-        .btn-primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-        .btn-primary:hover { opacity: 0.88; }
-
-        /* Facts strip */
-        .facts {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            margin-top: clamp(3.5rem, 8vw, 6rem);
-            border-top: 1px solid var(--line);
-        }
-        .fact { padding: 1.5rem 1.5rem 0 0; }
-        .fact + .fact { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-        .fact-value {
-            font-family: var(--serif);
-            font-size: clamp(2rem, 3.6vw, 2.75rem);
-            line-height: 1;
-            color: var(--ink);
-            letter-spacing: -0.01em;
-        }
-        .fact-label { margin-top: 0.6rem; font-size: 0.875rem; color: var(--muted); line-height: 1.45; }
-
-        /* ---------- Sections ---------- */
-        .section { padding: clamp(4rem, 9vw, 7rem) 0; border-top: 1px solid var(--line); }
-
-        .section-head {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 2rem;
             align-items: baseline;
-            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+            gap: 16px;
         }
-        .section-head h2 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(2.25rem, 4.5vw, 3.25rem);
-            line-height: 1.05;
-            letter-spacing: -0.015em;
-            color: var(--ink);
-        }
-        .section-head h2 em { color: var(--accent); }
+        .item-title { font-weight: 500; }
+        .item-date { color: var(--muted); white-space: nowrap; font-size: 14px; }
+        .item-sub { color: var(--muted); }
+        .item p, .item ul { margin-top: 8px; }
+        .item ul { list-style: none; }
+        .item li { position: relative; padding-left: 14px; }
+        .item li + li { margin-top: 4px; }
+        .item li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+        .stack { margin-top: 6px; font-size: 14px; color: var(--muted); }
 
-        /* Rows: experience / education */
-        .row {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
-            border-top: 1px solid var(--line);
-        }
-        .row:last-child { border-bottom: 1px solid var(--line); }
-        .row-meta { padding-top: 0.35rem; }
-        .row-meta .mono { display: block; }
-        .row-meta .mono + .mono { margin-top: 0.35rem; text-transform: none; }
-
-        .row h3 {
-            font-size: 1.1875rem;
-            font-weight: 500;
-            color: var(--ink);
-            letter-spacing: -0.01em;
-            line-height: 1.4;
-        }
-        .row h3 .at { color: var(--muted); font-weight: 400; }
-        .row-sub { margin-top: 0.15rem; font-size: 0.9375rem; color: var(--muted); }
-
-        .bullets { list-style: none; margin-top: 1rem; display: grid; gap: 0.55rem; max-width: 46rem; }
-        .bullets li { position: relative; padding-left: 1.25rem; }
-        .bullets li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.8em;
-            width: 0.5rem;
-            height: 1px;
-            background: var(--accent);
-        }
-
-        .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
-        .chip {
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: var(--ink-2);
-            padding: 0.2rem 0.6rem;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            background: var(--surface);
-        }
-
-        /* ---------- Projects ---------- */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: var(--line);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            overflow: hidden;
-        }
-
-        .project {
-            display: flex;
-            flex-direction: column;
-            padding: clamp(1.5rem, 3vw, 2.25rem);
-            background: var(--surface);
-            transition: background 0.25s ease;
-        }
-        .project:hover { background: var(--bg); }
-
-        .project-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-        .project-num { font-family: var(--serif); font-style: italic; font-size: 1.125rem; color: var(--accent); }
-
-        .project h3 {
-            margin-top: 1.75rem;
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(1.625rem, 2.6vw, 2rem);
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-            color: var(--ink);
-        }
-        .project p { margin-top: 0.85rem; font-size: 0.9375rem; line-height: 1.65; }
-        .project .chips { margin-top: auto; padding-top: 1.5rem; }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: 1.25rem;
-            align-self: flex-start;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--ink);
-            border-bottom: 1px solid var(--line-strong);
-            padding-bottom: 2px;
-            transition: border-color 0.2s ease, color 0.2s ease;
-        }
-        .project-link svg { width: 14px; height: 14px; transition: transform 0.25s ease; }
-        .project-link:hover { color: var(--accent); border-color: var(--accent); }
-        .project-link:hover svg { transform: translate(2px, -2px); }
-        .project .project-note { margin-top: 1.25rem; font-size: 0.8125rem; color: var(--muted); }
-
-        /* ---------- Skills ---------- */
-        .skills { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-        .skill-group { padding: 1.75rem 1.75rem 1.75rem 0; border-bottom: 1px solid var(--line); }
-        .skill-group:not(:nth-child(3n + 1)) { padding-left: 1.75rem; border-left: 1px solid var(--line); }
-        .skill-group h3 { margin-bottom: 0.9rem; }
-        .skill-group ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.15rem 0; }
-        .skill-group li { font-size: 0.9375rem; color: var(--ink); }
-        .skill-group li:not(:last-child)::after { content: '/'; margin: 0 0.55rem; color: var(--line-strong); }
-
-        /* ---------- Contact ---------- */
-        .contact { padding: clamp(5rem, 12vw, 9rem) 0 0; border-top: 1px solid var(--line); }
-        .contact h2 {
-            margin-top: 1.5rem;
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(3rem, 9vw, 7rem);
-            line-height: 1;
-            letter-spacing: -0.025em;
-            color: var(--ink);
-        }
-        .contact h2 em { color: var(--accent); }
-        .contact-lead { margin-top: 1.5rem; max-width: 34rem; font-size: 1.0625rem; }
-
-        .contact-mail {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-top: 2.5rem;
-            max-width: 100%;
-            font-family: var(--serif);
-            font-size: clamp(1.25rem, 3.4vw, 2.25rem);
-            color: var(--ink);
-            border-bottom: 1px solid var(--line-strong);
-            padding-bottom: 0.25rem;
-            overflow-wrap: anywhere;
-            transition: color 0.2s ease, border-color 0.2s ease;
-        }
-        .contact-mail svg { width: 0.8em; height: 0.8em; flex: none; transition: transform 0.25s ease; }
-        .contact-mail:hover { color: var(--accent); border-color: var(--accent); }
-        .contact-mail:hover svg { transform: translate(3px, -3px); }
-
-        .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+        /* Skills */
+        .skills { display: grid; grid-template-columns: 140px 1fr; gap: 10px 16px; }
+        .skills dt { color: var(--muted); }
 
         footer {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 2rem 0 2.5rem;
-            margin-top: clamp(4rem, 8vw, 6rem);
+            margin-top: 80px;
+            padding-top: 20px;
             border-top: 1px solid var(--line);
-        }
-        footer a:hover { color: var(--ink); }
-
-        /* ---------- Reveal on scroll (only when JS runs) ---------- */
-        .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2, .7, .2, 1); }
-        .js .reveal.in { opacity: 1; transform: none; }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            .js .reveal { opacity: 1; transform: none; transition: none; }
-            .status-dot { animation: none; }
+            font-size: 14px;
+            color: var(--muted);
         }
 
-        /* ---------- Responsive ---------- */
-        @media (max-width: 900px) {
-            .section-head, .row { grid-template-columns: 1fr; gap: 0.75rem; }
-            .row-meta { padding-top: 0; display: flex; flex-wrap: wrap; gap: 0 1rem; }
-            .row-meta .mono + .mono { margin-top: 0; }
-            .skills { grid-template-columns: repeat(2, 1fr); }
-            .skill-group:not(:nth-child(3n + 1)) { padding-left: 0; border-left: 0; }
-            .skill-group:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-            .facts { grid-template-columns: repeat(2, 1fr); }
-            .fact:nth-child(3) { padding-left: 0; border-left: 0; }
-            .fact:nth-child(n + 3) { margin-top: 1.5rem; border-top: 1px solid var(--line); }
-        }
-
-        @media (max-width: 680px) {
-            .nav-links { display: none; }
-            .projects { grid-template-columns: 1fr; }
-            .skills { grid-template-columns: 1fr; }
-            .skill-group, .skill-group:nth-child(even) { padding: 1.5rem 0; border-left: 0; }
-            .fact { padding-right: 1rem; }
-            .fact + .fact { padding-left: 1rem; }
-            .fact:nth-child(3) { padding-left: 0; }
+        @media (max-width: 520px) {
+            main { padding-top: 56px; }
+            .item-head { flex-direction: column; gap: 0; }
+            .skills { grid-template-columns: 1fr; gap: 2px; }
+            .skills dd { margin-bottom: 10px; }
         }
 
         @media print {
-            .nav, .hero-actions, .contact-links, .status { display: none; }
-            .js .reveal { opacity: 1; transform: none; }
-            .section, .contact { padding: 1.5rem 0; }
+            main { padding-top: 0; }
+            a { text-decoration: none; }
         }
     </style>
 </head>
 
 <body>
-    <!-- Icon sprite -->
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-        <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
-        <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
-        <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.97c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></symbol>
-        <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
-    </svg>
+    <main>
+        <header>
+            <h1>Yanqiang Qiao</h1>
+            <p class="role">Full-Stack Developer · AI Agents &amp; Workflow Automation · Berlin</p>
 
-    <header class="nav" id="nav">
-        <div class="wrap nav-inner">
-            <a href="#top" class="brand" aria-label="Yanqiang Qiao — back to top">YQ.</a>
-            <nav aria-label="Primary">
-                <ul class="nav-links">
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#education">Education</a></li>
-                </ul>
+            <div class="intro">
+                <p>
+                    I'm a full-stack engineer with 2.5 years in production on an industrial IoT platform
+                    serving millions of smart water meters and billions of data records.
+                </p>
+                <p>
+                    I now apply that engineering background to LLM-based systems — agents, RAG and
+                    workflow automation with LangGraph, LangChain and n8n — while studying for an
+                    M.Sc. in Industry 4.0. Open to full-time roles in Germany.
+                </p>
+            </div>
+
+            <nav class="links" aria-label="Contact">
+                <a href="mailto:yanqiang.qiao.de@gmail.com">Email</a>
+                <a href="https://github.com/RustonSharp" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/yanqiang-qiao-bb0b43366/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </nav>
-            <a href="#contact" class="nav-cta">Get in touch</a>
-        </div>
-    </header>
+        </header>
 
-    <main id="top">
-        <!-- Hero -->
-        <section class="hero">
-            <div class="wrap">
-                <div class="status reveal"><span class="status-dot" aria-hidden="true"></span>Open to full-time roles · Berlin, Germany</div>
+        <section>
+            <h2>Experience</h2>
 
-                <h1 class="reveal">Yanqiang Qiao builds <em>AI agents</em> on solid full&#8209;stack foundations.</h1>
-
-                <p class="hero-lead reveal">
-                    Full-stack engineer with <strong>2.5 years in production</strong> on an industrial IoT platform —
-                    millions of smart meters, billions of records. Now pairing that engineering discipline with
-                    LLMs, <strong>LangGraph</strong> and <strong>n8n</strong> to automate real business workflows,
-                    while pursuing an M.Sc. in Industry 4.0 in Germany.
-                </p>
-
-                <div class="hero-actions reveal">
-                    <a class="btn btn-primary" href="mailto:yanqiang.qiao.de@gmail.com">
-                        <svg aria-hidden="true"><use href="#i-mail"/></svg>Email me
-                    </a>
-                    <a class="btn" href="https://github.com/RustonSharp" target="_blank" rel="noopener noreferrer">
-                        <svg aria-hidden="true"><use href="#i-github"/></svg>GitHub
-                    </a>
-                    <a class="btn" href="https://www.linkedin.com/in/yanqiang-qiao-bb0b43366/" target="_blank" rel="noopener noreferrer">
-                        <svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn
-                    </a>
+            <div class="item">
+                <div class="item-head">
+                    <span class="item-title">Full-Stack Developer</span>
+                    <span class="item-date">2023 — 2025</span>
                 </div>
+                <div class="item-sub">Jiangsu Chengshui IoT Technology · Wuxi, China</div>
+                <ul>
+                    <li>Developed an ABP.NET + Vue 3 water utility platform connecting millions of smart meters and sensors, with billion-level data records.</li>
+                    <li>Built device management and analytics APIs, real-time alarm rules, and a Redis queue to absorb peak meter-reading load.</li>
+                    <li>Delivered monitoring dashboards (ECharts), 3D pump-room views (Three.js) and GIS monitoring (Cesium).</li>
+                    <li>Built a meter-reading recognition module with OpenCV and EfficientNet; deployed services on IIS and Linux.</li>
+                </ul>
+            </div>
 
-                <dl class="facts reveal">
-                    <div class="fact">
-                        <dt class="fact-value">2.5 yrs</dt>
-                        <dd class="fact-label">Full-stack development on a production IoT platform</dd>
-                    </div>
-                    <div class="fact">
-                        <dt class="fact-value">Millions</dt>
-                        <dd class="fact-label">Smart water meters served by that platform</dd>
-                    </div>
-                    <div class="fact">
-                        <dt class="fact-value">Billions</dt>
-                        <dd class="fact-label">Meter data records processed</dd>
-                    </div>
-                    <div class="fact">
-                        <dt class="fact-value">3</dt>
-                        <dd class="fact-label">Open-source AI projects on GitHub</dd>
-                    </div>
-                </dl>
+            <div class="item">
+                <div class="item-head">
+                    <span class="item-title">Java Developer</span>
+                    <span class="item-date">2022</span>
+                </div>
+                <div class="item-sub">Huawei Technologies · Huawei Cloud · Suzhou, China</div>
+                <p>Maintained and enhanced the cloud platform's data integration modules for reliable end-to-end data flow.</p>
             </div>
         </section>
 
-        <!-- Experience -->
-        <section class="section" id="experience">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="mono">01 — Experience</span>
-                    <h2>Where I've <em>shipped</em></h2>
+        <section>
+            <h2>Projects</h2>
+
+            <div class="item">
+                <div class="item-head">
+                    <a class="item-title" href="https://github.com/RustonSharp/contract_forge" target="_blank" rel="noopener noreferrer">Contract Forge ↗</a>
+                    <span class="item-date">2025–26</span>
                 </div>
+                <p>LLM-based contract auditing: document parsing and OCR, clause and signatory compliance checks, regulation-conflict detection, risk assessment and e-signatures, orchestrated as n8n / LangGraph workflows.</p>
+                <div class="stack">LangGraph, n8n, Copilot Studio, PaddleOCR, Python</div>
+            </div>
 
-                <article class="row reveal">
-                    <div class="row-meta">
-                        <span class="mono">Feb 2023 — Aug 2025</span>
-                        <span class="mono">Wuxi, China</span>
-                    </div>
-                    <div>
-                        <h3>Full-Stack Developer <span class="at">· Jiangsu Chengshui IoT Technology</span></h3>
-                        <p class="row-sub">Technology Center — intelligent water utility platform</p>
-                        <ul class="bullets">
-                            <li>Developed and maintained an ABP.NET + Vue 3 platform connecting millions of smart meters and pressure sensors, handling billion-level data records.</li>
-                            <li>Built device management and data analysis APIs, real-time alarm rules and batch device import; buffered high-frequency meter readings with a Redis message queue to keep the system stable at peak load.</li>
-                            <li>Delivered ECharts monitoring dashboards, 3D pump-room views (Three.js) and GIS monitoring (Cesium) so operators could locate faulty devices quickly.</li>
-                            <li>Built the automated meter-reading recognition module (OpenCV, EfficientNet) and integrated it into backend workflows.</li>
-                            <li>Deployed services on IIS / Windows Server and later on Linux (Ubuntu, Debian).</li>
-                        </ul>
-                        <div class="chips">
-                            <span class="chip">C# / ABP.NET</span><span class="chip">Vue 3</span><span class="chip">SQL Server</span><span class="chip">Redis</span><span class="chip">ECharts</span><span class="chip">Three.js</span><span class="chip">OpenCV</span>
-                        </div>
-                    </div>
-                </article>
+            <div class="item">
+                <div class="item-head">
+                    <a class="item-title" href="https://github.com/RustonSharp/xu-ai-news-rag" target="_blank" rel="noopener noreferrer">AI News Knowledge Base ↗</a>
+                    <span class="item-date">2025</span>
+                </div>
+                <p>Full-stack RAG system: RSS and web-scraping ingestion, FAISS vector search, clustering and summarization with local Qwen models.</p>
+                <div class="stack">LangChain, FAISS, Ollama, Flask, React</div>
+            </div>
 
-                <article class="row reveal">
-                    <div class="row-meta">
-                        <span class="mono">Jul 2022 — Sep 2022</span>
-                        <span class="mono">Suzhou, China</span>
-                    </div>
-                    <div>
-                        <h3>Java Developer <span class="at">· Huawei Technologies</span></h3>
-                        <p class="row-sub">Huawei Cloud</p>
-                        <ul class="bullets">
-                            <li>Maintained and enhanced the cloud platform's data integration modules to ensure reliable, end-to-end data flow across systems.</li>
-                        </ul>
-                        <div class="chips"><span class="chip">Java</span><span class="chip">Data integration</span></div>
-                    </div>
-                </article>
+            <div class="item">
+                <div class="item-head">
+                    <a class="item-title" href="https://github.com/RustonSharp/doc_ocr_structure" target="_blank" rel="noopener noreferrer">OCR &amp; Document Structuring ↗</a>
+                    <span class="item-date">2025</span>
+                </div>
+                <p>Turns scanned images and PDFs into structured data with OCR, entity recognition and LLM field extraction, including confidence scores and a review UI.</p>
+                <div class="stack">Python, OCR, spaCy, LLM</div>
+            </div>
+
+            <div class="item">
+                <div class="item-head">
+                    <span class="item-title">Water Meter Reading Recognition</span>
+                    <span class="item-date">Chengshui IoT</span>
+                </div>
+                <p>Production computer-vision module: preprocessing, Hough-transform tilt correction and EfficientNet digit detection across multi-dial meters. Source is proprietary.</p>
+                <div class="stack">OpenCV, EfficientNet, Python</div>
             </div>
         </section>
 
-        <!-- Projects -->
-        <section class="section" id="projects">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="mono">02 — Projects</span>
-                    <h2>Selected <em>work</em></h2>
+        <section>
+            <h2>Skills</h2>
+            <dl class="skills">
+                <dt>AI &amp; Automation</dt>
+                <dd>LangChain, LangGraph, n8n, Copilot Studio, Ollama, RAG, OpenCV</dd>
+                <dt>Frontend</dt>
+                <dd>TypeScript, Vue 3, React, ECharts, Three.js</dd>
+                <dt>Backend</dt>
+                <dd>C# / .NET (ABP), Python, Flask, Java</dd>
+                <dt>Data</dt>
+                <dd>SQL Server, SQLite, Redis, FAISS</dd>
+                <dt>Infrastructure</dt>
+                <dd>Linux, IIS, Docker, Git</dd>
+                <dt>Languages</dt>
+                <dd>Chinese (native), English (professional working)</dd>
+            </dl>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+
+            <div class="item">
+                <div class="item-head">
+                    <span class="item-title">M.Sc. Industry 4.0</span>
+                    <span class="item-date">2025 — present</span>
                 </div>
+                <div class="item-sub">XU Exponential University of Applied Sciences</div>
+            </div>
 
-                <div class="projects reveal">
-                    <article class="project">
-                        <div class="project-top"><span class="project-num">01</span><span class="mono">Personal project · 2025–26</span></div>
-                        <h3>Contract Forge</h3>
-                        <p>An LLM-based contract auditing system: parses PDF/DOCX and scanned contracts (PaddleOCR / LLM vision), checks signatories and core clauses, detects conflicts with regulations, assesses risk and handles e-signatures — orchestrated as n8n / LangGraph workflows with parallel execution and natural-language triggering via Copilot Studio.</p>
-                        <div class="chips"><span class="chip">LangGraph</span><span class="chip">n8n</span><span class="chip">Copilot Studio</span><span class="chip">PaddleOCR</span><span class="chip">Python</span></div>
-                        <a class="project-link" href="https://github.com/RustonSharp/contract_forge" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                    </article>
-
-                    <article class="project">
-                        <div class="project-top"><span class="project-num">02</span><span class="mono">Personal project · 2025</span></div>
-                        <h3>AI News Knowledge Base</h3>
-                        <p>A full-stack RAG system that ingests news via RSS and web scraping, indexes it in FAISS and answers questions with local Qwen models served by Ollama — with clustering, AI summaries, online-search fallback, JWT auth and a React + TypeScript dashboard.</p>
-                        <div class="chips"><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Ollama</span><span class="chip">Flask</span><span class="chip">React</span></div>
-                        <a class="project-link" href="https://github.com/RustonSharp/xu-ai-news-rag" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                    </article>
-
-                    <article class="project">
-                        <div class="project-top"><span class="project-num">03</span><span class="mono">Personal project · 2025</span></div>
-                        <h3>OCR &amp; Document Structuring</h3>
-                        <p>Turns scanned images and PDFs into structured data: skew correction and denoising, multi-engine OCR, NLP entity recognition, LLM-based field extraction with 0–100 confidence scores, and a review UI for low-confidence fields.</p>
-                        <div class="chips"><span class="chip">Python</span><span class="chip">OCR</span><span class="chip">spaCy</span><span class="chip">LLM</span></div>
-                        <a class="project-link" href="https://github.com/RustonSharp/doc_ocr_structure" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                    </article>
-
-                    <article class="project">
-                        <div class="project-top"><span class="project-num">04</span><span class="mono">Production · Chengshui IoT</span></div>
-                        <h3>Water Meter Reading Recognition</h3>
-                        <p>A computer-vision module for the smart water platform: image preprocessing, Hough-transform tilt correction and EfficientNet-based digit detection across multi-dial meters, with results fed into backend data workflows.</p>
-                        <div class="chips"><span class="chip">OpenCV</span><span class="chip">EfficientNet</span><span class="chip">Deep learning</span><span class="chip">Python</span></div>
-                        <p class="project-note">Built in production — source is proprietary.</p>
-                    </article>
+            <div class="item">
+                <div class="item-head">
+                    <span class="item-title">B.Eng. Software Engineering</span>
+                    <span class="item-date">2016 — 2022</span>
                 </div>
+                <div class="item-sub">Dalian University of Technology</div>
             </div>
         </section>
 
-        <!-- Skills -->
-        <section class="section" id="skills">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="mono">03 — Skills</span>
-                    <h2>The <em>toolkit</em></h2>
-                </div>
-
-                <div class="skills reveal">
-                    <div class="skill-group">
-                        <h3 class="mono">AI &amp; Automation</h3>
-                        <ul><li>LangChain</li><li>LangGraph</li><li>n8n</li><li>Copilot Studio</li><li>Ollama</li><li>RAG</li><li>OpenCV</li><li>PaddleOCR</li></ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3 class="mono">Frontend</h3>
-                        <ul><li>TypeScript</li><li>JavaScript</li><li>Vue 2 / 3</li><li>Pinia</li><li>React</li><li>ECharts</li><li>Three.js</li><li>Cesium</li></ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3 class="mono">Backend</h3>
-                        <ul><li>C# / .NET (ABP)</li><li>Python</li><li>Flask</li><li>Java</li><li>REST APIs</li></ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3 class="mono">Data</h3>
-                        <ul><li>SQL Server</li><li>SQLite</li><li>Redis</li><li>FAISS</li></ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3 class="mono">Infrastructure &amp; Tools</h3>
-                        <ul><li>Linux</li><li>IIS / Windows Server</li><li>Docker</li><li>Git</li><li>Vite</li><li>Postman</li></ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3 class="mono">Languages</h3>
-                        <ul><li>Chinese — native</li><li>English — professional working</li></ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="section" id="education">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <span class="mono">04 — Education</span>
-                    <h2><em>Learning</em>, formally</h2>
-                </div>
-
-                <article class="row reveal">
-                    <div class="row-meta">
-                        <span class="mono">Oct 2025 — Present</span>
-                        <span class="mono">Germany</span>
-                    </div>
-                    <div>
-                        <h3>M.Sc. Industry 4.0 <span class="at">· XU Exponential University of Applied Sciences</span></h3>
-                        <p class="row-sub">Full-time</p>
-                    </div>
-                </article>
-
-                <article class="row reveal">
-                    <div class="row-meta">
-                        <span class="mono">Sep 2016 — Apr 2022</span>
-                        <span class="mono">Dalian, China</span>
-                    </div>
-                    <div>
-                        <h3>B.Eng. Software Engineering <span class="at">· Dalian University of Technology</span></h3>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact" id="contact">
-            <div class="wrap">
-                <span class="mono reveal">05 — Contact</span>
-                <h2 class="reveal">Let's build something <em>useful.</em></h2>
-                <p class="contact-lead reveal">
-                    I'm open to full-time roles in AI integration, workflow automation and full-stack development in Germany.
-                    Email is the fastest way to reach me.
-                </p>
-                <a class="contact-mail reveal" href="mailto:yanqiang.qiao.de@gmail.com">
-                    yanqiang.qiao.de@gmail.com<svg aria-hidden="true"><use href="#i-arrow"/></svg>
-                </a>
-                <div class="contact-links reveal">
-                    <a class="btn" href="https://github.com/RustonSharp" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
-                    <a class="btn" href="https://www.linkedin.com/in/yanqiang-qiao-bb0b43366/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
-                </div>
-
-                <footer>
-                    <span class="mono">© 2026 Yanqiang Qiao</span>
-                    <a class="mono" href="https://github.com/RustonSharp/about-me" target="_blank" rel="noopener noreferrer">Source ↗</a>
-                </footer>
-            </div>
-        </section>
+        <footer>
+            <a href="mailto:yanqiang.qiao.de@gmail.com">yanqiang.qiao.de@gmail.com</a>
+        </footer>
     </main>
-
-    <script>
-        // Hairline under the nav once the page is scrolled
-        const nav = document.getElementById('nav');
-        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        // Fade sections in as they enter the viewport
-        const items = [...document.querySelectorAll('.reveal')];
-        const showAll = () => items.forEach((el) => el.classList.add('in'));
-        // Anything already on screen shows immediately; the rest fades in on scroll
-        items.forEach((el) => {
-            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
-        });
-        // Printing should never hide content
-        window.addEventListener('beforeprint', showAll);
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach((e) => {
-                    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-                });
-            }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-            items.forEach((el) => io.observe(el));
-        } else {
-            items.forEach((el) => el.classList.add('in'));
-        }
-    </script>
 </body>
 
 </html>
